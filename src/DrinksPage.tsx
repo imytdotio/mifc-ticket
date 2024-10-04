@@ -1,5 +1,5 @@
 // src/DrinksPage.tsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { useNavigate, useLocation } from "react-router-dom";
 
