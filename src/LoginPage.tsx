@@ -30,7 +30,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-screen bg-gray-900">
+    <div className="flex items-center justify-center min-h-screen w-screen bg-gray-900 p-4">
       <div className="w-full max-w-2xl p-5 bg-gray-800 shadow-lg rounded mx-auto">
         <h1 className="text-2xl font-bold mb-5 text-center pp-fragment text-yellow-400 tracking-tight">
           Space Bar Cocktail Voucher
