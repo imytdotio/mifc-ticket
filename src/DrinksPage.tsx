@@ -68,7 +68,7 @@ function DrinksPage() {
             return;
           }
 
-          setCocktailAssigned(`Your assigned cocktail: ${cocktailData.name}`);
+          setCocktailAssigned(`${cocktailData.name}`);
         }
       }
     };
@@ -107,9 +107,7 @@ function DrinksPage() {
 
     // Randomly select a cocktail from the available ones
     const selectedCocktail =
-      availableCocktails[
-        Math.floor(Math.random() * availableCocktails.length)
-      ];
+      availableCocktails[Math.floor(Math.random() * availableCocktails.length)];
 
     // Check if a record exists for the user
     const { data: existingDrink, error: existingDrinkError } = await supabase
@@ -137,7 +135,7 @@ function DrinksPage() {
         console.error("Error updating cocktail:", updateError);
         alert("Error assigning cocktail.");
       } else {
-        setCocktailAssigned(`Your assigned cocktail: ${selectedCocktail.name}`);
+        setCocktailAssigned(`${selectedCocktail.name}`);
         setCocktailSelected(true);
       }
     } else {
@@ -157,7 +155,7 @@ function DrinksPage() {
         console.error("Error assigning cocktail:", insertError);
         alert("Error assigning cocktail.");
       } else {
-        setCocktailAssigned(`Your assigned cocktail: ${selectedCocktail.name}`);
+        setCocktailAssigned(`${selectedCocktail.name}`);
         setCocktailSelected(true);
       }
     }
@@ -244,11 +242,11 @@ function DrinksPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-screen bg-gray-900">
+    <div className="flex items-center justify-center min-h-screen w-screen bg-gray-900 pp-fragment">
       <div className="max-w-md w-full p-5 bg-gray-800 shadow-lg rounded">
-        <div className="flex justify-between items-center mb-5">
-          <h1 className="text-2xl font-bold text-white">
-            Cocktail Party Voucher
+        <div className="flex items-center mb-5 justify-center">
+          <h1 className="text-2xl font-bold text-center tracking-tight text-yellow-400">
+            Space Bar Cocktail Voucher
           </h1>
         </div>
         {participantName && (
@@ -269,14 +267,14 @@ function DrinksPage() {
             </label>
             <button
               onClick={handleGetVoucher}
-              className="w-full p-2 bg-green-600 hover:bg-green-700 text-white rounded"
+              className="w-full p-2 bg-teal-300 hover:bg-teal-400 transition-all duration-300 rounded"
             >
               Get Cocktail Voucher
             </button>
           </>
         ) : (
           <>
-            <p className="mb-3 text-white">{cocktailAssigned}</p>
+            <p className="mb-3 text-white ">Your assigned cocktail: <span className="text-yellow-400">{cocktailAssigned}</span></p>
 
             <div className="mt-5">
               <button
@@ -285,10 +283,12 @@ function DrinksPage() {
                 className={`w-full p-2 ${
                   firstDrinkClaimed
                     ? "bg-gray-600"
-                    : "bg-blue-600 hover:bg-blue-700"
+                    : "bg-teal-300 hover:bg-teal-400 transition-all duration-300 rounded text-black"
                 } text-white rounded mb-3`}
               >
-                {firstDrinkClaimed ? "First Drink Claimed" : "Claim First Drink"}
+                {firstDrinkClaimed
+                  ? "Cocktail Claimed"
+                  : "Claim Cocktail"}
               </button>
               <button
                 onClick={handleSecondDrink}
@@ -296,10 +296,12 @@ function DrinksPage() {
                 className={`w-full p-2 ${
                   secondDrinkClaimed
                     ? "bg-gray-600"
-                    : "bg-yellow-600 hover:bg-yellow-700"
+                    : "bg-teal-300 hover:bg-teal-400 transition-all duration-300 rounded text-black"
                 } text-white rounded mb-3`}
               >
-                {secondDrinkClaimed ? "Second Drink Claimed" : "Claim Second Drink"}
+                {secondDrinkClaimed
+                  ? "Second Drink Claimed"
+                  : "Claim Second Drink"}
               </button>
               <button
                 onClick={handleThirdDrink}
@@ -307,10 +309,12 @@ function DrinksPage() {
                 className={`w-full p-2 ${
                   thirdDrinkClaimed
                     ? "bg-gray-600"
-                    : "bg-red-600 hover:bg-red-700"
+                    : "bg-teal-300 hover:bg-teal-400 transition-all duration-300 rounded text-black"
                 } text-white rounded`}
               >
-                {thirdDrinkClaimed ? "Third Drink Claimed" : "Claim Third Drink"}
+                {thirdDrinkClaimed
+                  ? "Third Drink Claimed"
+                  : "Claim Third Drink"}
               </button>
             </div>
           </>
